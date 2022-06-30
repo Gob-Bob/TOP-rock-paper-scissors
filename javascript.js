@@ -1,3 +1,11 @@
+// Random number generator for computer choice
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
 /* If user input is not rock, paper, or scissors, 
     throw an error message and ask them for the input again*/
 while (true) {
@@ -16,7 +24,7 @@ while (true) {
     }
 }
 // Get computer's input
-    // Randomly generate the computer's input between rock, paper and scissors
+// Randomly generate the computer's input between rock, paper and scissors
 // Function compares both player's inputs
     // Determine which input beats the other
     // Whoever's input beats the other, declare them the winner
