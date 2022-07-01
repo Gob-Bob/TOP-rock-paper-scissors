@@ -8,31 +8,28 @@ function getRandomIntInclusive(min, max) {
 // Randomly return 'Rock', 'Paper', or 'Scissors' for computer's choice
 function computerPlay() {
     let result = getRandomIntInclusive(1, 3);
-    if (result == 1) {
+    if (result === 1) {
         return "rock";
-    } else if (result == 2) {
+    } else if (result === 2) {
         return "paper";
-    } else if (result == 3) {
+    } else if (result === 3) {
         return "scissors";
     }
 }
 
-const playerSelection = "rock";
-const computerSelecton = computerPlay();
-
 // Function that plays a single round of rock, paper, scissors and returns winner/loser string
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
-    if (playerSelection == computerSelection) {
+    if (playerSelection === computerSelection) {
         return ("Tie Game! " + playerSelection + " is the same as " + computerSelection);
     }
-    else if (playerSelection == "rock" && computerSelection == "scissors") {
+    else if (playerSelection === "rock" && computerSelection === "scissors") {
         return ("You Win! " + playerSelection + " beats " + computerSelection);
     }
-    else if (playerSelection == "paper" && computerSelection == "rock") {
+    else if (playerSelection === "paper" && computerSelection === "rock") {
         return ("You Win! " + playerSelection + " beats " + computerSelection);
     }
-    else if (playerSelection == "scissors" && computerSelection == "paper") {
+    else if (playerSelection === "scissors" && computerSelection === "paper") {
         return ("You Win! " + playerSelection + " beats " + computerSelection);
     }
     else {
@@ -40,4 +37,31 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound(playerSelection, computerSelecton));
+// Play 5 rounds of game
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Please choose: rock, paper, or scissors")
+        let computerSelection = computerPlay();
+        results = playRound(playerSelection, computerSelection);
+        if (results.startsWith("You Win!")) {
+            playerScore++;
+        }
+        else if (results.startsWith("You Lose!")) {
+            computerScore++;
+        }
+        console.log(results);
+    }
+    if (playerScore > computerScore) {
+        console.log("Winner is Player with " + playerScore + " Points! Computer with " + computerScore + " Points!")
+    }
+    else if (playerScore < computerScore) {
+        console.log("Winner is Computer with " + computerScore + " Points! Player with " + playerScore + " Points!")
+    }
+    else {
+        console.log("No winner! Player with " + playerScore + " Points! Computer with " + computerScore + " Points!")
+    }
+}
+
+game();
