@@ -17,22 +17,27 @@ function computerPlay() {
     }
 }
 
-// Function that plays a single round of rock, paper, scissors
-function gameRound(playerSelection, computerSelection) {
+const playerSelection = "rock";
+const computerSelecton = computerPlay();
+
+// Function that plays a single round of rock, paper, scissors and returns winner/loser string
+function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection == computerSelection) {
-        console.log("Tie Game! " + playerSelection + " is the same as " + computerSelection);
+        return ("Tie Game! " + playerSelection + " is the same as " + computerSelection);
     }
     else if (playerSelection == "rock" && computerSelection == "scissors") {
-        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        return ("You Win! " + playerSelection + " beats " + computerSelection);
     }
     else if (playerSelection == "paper" && computerSelection == "rock") {
-        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        return ("You Win! " + playerSelection + " beats " + computerSelection);
     }
     else if (playerSelection == "scissors" && computerSelection == "paper") {
-        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        return ("You Win! " + playerSelection + " beats " + computerSelection);
     }
     else {
-        console.log("You Lose! " + playerSelection + " does not beat " + computerSelection);
+        return ("You Lose! " + playerSelection + " does not beat " + computerSelection);
     }
 }
+
+console.log(playRound(playerSelection, computerSelecton));
