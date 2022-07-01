@@ -41,13 +41,19 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
+    // Loops 5 times
     for (let i = 0; i < 5; i++) {
+        // Asks player for their choice
         let playerSelection = prompt("Please choose: rock, paper, or scissors")
+        // Selects computer's choice
         let computerSelection = computerPlay();
+        // Stores result from round into results variable 
         results = playRound(playerSelection, computerSelection);
+        // If player wins then add a point to their score
         if (results.startsWith("You Win!")) {
             playerScore++;
         }
+        // If computer wins then add a point to their score
         else if (results.startsWith("You Lose!")) {
             computerScore++;
         }
