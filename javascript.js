@@ -70,4 +70,52 @@ function game() {
     }
 }
 
-game();
+const body = document.querySelector('body')
+
+const buttonRock = document.createElement('button');
+const buttonPaper = document.createElement('button');
+const buttonScissors = document.createElement('button');
+const welcomeMsg = document.createElement('div');
+
+buttonRock.textContent = 'Rock';
+buttonPaper.textContent = 'Paper';
+buttonScissors.textContent = 'Scissors';
+welcomeMsg.textContent = 'Please choose selection:';
+
+let playerScore = 0;
+let computerScore = 0;
+
+buttonRock.addEventListener('click', () => {
+    let playerSelection = "rock";
+    let computerSelection = computerPlay();
+    let gameResults = playRound(playerSelection, computerSelection);
+
+    const game = document.createElement('div');
+    game.textContent = gameResults;
+    body.appendChild(game);
+
+    if (gameResults.startsWith("You Win!")) {
+        playerScore++;
+    } else if (gameResults.startsWith("You Lose!")) {
+        computerScore++;
+    }
+
+    const score = document.createElement('div');
+    score.textContent = `Player Score: ${playerScore} | Computer Score: ${computerScore}`;
+    body.appendChild(score);
+});
+buttonPaper.addEventListener('click', () => {
+    let playerSelection = "paper";
+    let computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+});
+buttonScissors.addEventListener('click', () => {
+    let playerSelection = "scissors";
+    let computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+});
+
+body.appendChild(welcomeMsg);
+body.appendChild(buttonRock);
+body.appendChild(buttonPaper);
+body.appendChild(buttonScissors);
