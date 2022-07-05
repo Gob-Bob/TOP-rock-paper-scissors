@@ -70,23 +70,8 @@ function game() {
     }
 }
 
-const body = document.querySelector('body')
-
-const buttonRock = document.createElement('button');
-const buttonPaper = document.createElement('button');
-const buttonScissors = document.createElement('button');
-const welcomeMsg = document.createElement('div');
-
-buttonRock.textContent = 'Rock';
-buttonPaper.textContent = 'Paper';
-buttonScissors.textContent = 'Scissors';
-welcomeMsg.textContent = 'Please choose selection:';
-
-let playerScore = 0;
-let computerScore = 0;
-
-buttonRock.addEventListener('click', () => {
-    let playerSelection = "rock";
+function buttonGame(buttonChoice) {
+    let playerSelection = buttonChoice;
     let computerSelection = computerPlay();
     let gameResults = playRound(playerSelection, computerSelection);
 
@@ -103,16 +88,57 @@ buttonRock.addEventListener('click', () => {
     const score = document.createElement('div');
     score.textContent = `Player Score: ${playerScore} | Computer Score: ${computerScore}`;
     body.appendChild(score);
+}
+
+function determineWinner() {
+    const winner = document.createElement('div');
+    if (playerScore == 5) {
+        winner.textContent = "Winner is Player!";
+        body.appendChild(winner);
+    } else if (computerScore == 5) {
+        winner.textContent = "Winner is Computer!";
+        body.appendChild(winner);
+    }
+}
+
+const body = document.querySelector('body')
+
+const buttonRock = document.createElement('button');
+const buttonPaper = document.createElement('button');
+const buttonScissors = document.createElement('button');
+const welcomeMsg = document.createElement('div');
+
+buttonRock.textContent = 'Rock';
+buttonPaper.textContent = 'Paper';
+buttonScissors.textContent = 'Scissors';
+welcomeMsg.textContent = 'Please choose selection:';
+
+let playerScore = 0;
+let computerScore = 0;
+
+buttonRock.addEventListener('click', () => {
+    if (playerScore == 5 || computerScore == 5) {
+        ;
+    } else {
+        buttonGame("rock");
+        determineWinner();
+    }
 });
 buttonPaper.addEventListener('click', () => {
-    let playerSelection = "paper";
-    let computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
+    if (playerScore == 5 || computerScore == 5) {
+        ;
+    } else {
+        buttonGame("paper");
+        determineWinner();
+    }
 });
 buttonScissors.addEventListener('click', () => {
-    let playerSelection = "scissors";
-    let computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
+    if (playerScore == 5 || computerScore == 5) {
+        ;
+    } else {
+        buttonGame("scissors");
+        determineWinner();
+    }
 });
 
 body.appendChild(welcomeMsg);
