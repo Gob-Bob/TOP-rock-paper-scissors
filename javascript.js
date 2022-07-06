@@ -37,39 +37,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Play 5 rounds of game
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    // Loops 5 times
-    for (let i = 0; i < 5; i++) {
-        // Asks player for their choice
-        let playerSelection = prompt("Please choose: rock, paper, or scissors")
-        // Selects computer's choice
-        let computerSelection = computerPlay();
-        // Stores result from round into results variable 
-        results = playRound(playerSelection, computerSelection);
-        // If player wins then add a point to their score
-        if (results.startsWith("You Win!")) {
-            playerScore++;
-        }
-        // If computer wins then add a point to their score
-        else if (results.startsWith("You Lose!")) {
-            computerScore++;
-        }
-        console.log(results);
-    }
-    if (playerScore > computerScore) {
-        console.log("Winner is Player with " + playerScore + " Points! Computer with " + computerScore + " Points!")
-    }
-    else if (playerScore < computerScore) {
-        console.log("Winner is Computer with " + computerScore + " Points! Player with " + playerScore + " Points!")
-    }
-    else {
-        console.log("No winner! Player with " + playerScore + " Points! Computer with " + computerScore + " Points!")
-    }
-}
-
 function buttonGame(buttonChoice) {
     let playerSelection = buttonChoice;
     let computerSelection = computerPlay();
